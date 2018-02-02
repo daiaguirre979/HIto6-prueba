@@ -2,7 +2,6 @@ import time
 from flask import Flask, jsonify, render_template, flash, redirect, request, url_for
 from flask_sqlalchemy import SQLAlchemy
 
-
 DBUSER = 'dayanna'
 DBPASS = 'sistemas'
 DBHOST = 'database'
@@ -19,12 +18,11 @@ app.config['SQLALCHEMY_DATABASE_URI'] = \
         host=DBHOST,
         port=DBPORT,
         db=DBNAME)
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 app.secret_key = 'sistemas'
 
 
 db = SQLAlchemy(app)
-
 
 class productos(db.Model):
     id = db.Column('producto_id', db.Integer, primary_key=True)
@@ -50,21 +48,21 @@ def database_initialization_sequence():
     db.session.commit()
 
 
-@app.route("/")
+@app.route("/inicio")
 def server_info():
     return jsonify({"status":"OK"})
 
 
 @app.route("/status/")
-def server_info():
+def server():
     return jsonify({"status":"OK"})
 
 
-@app.route("/inicio/")
+@app.route('/', methods=['GET', 'POST'])
 def home():
-     if request.method == 'POST':
+    if request.method == 'POST':
         if not request.form['name'] or not request.form['descripcion'] or not request.form['valor']:
-            flash('Completa los datos', 'error')
+            flash('Completa los campos', 'error')
         else:
             producto = productos(
                     request.form['name'],
@@ -75,7 +73,7 @@ def home():
             db.session.commit()
             flash('Grabado correctamente')
             return redirect(url_for('home'))
-    return render_template('show_all.html', productos=productos.query.all())
+    return render_template('show_all.html', producto=productos.query.all())
 
 
 if __name__ == '__main__':
@@ -89,3 +87,4 @@ if __name__ == '__main__':
             dbstatus = True
     database_initialization_sequence()
     app.run(port=5000, host='0.0.0.0')
+
