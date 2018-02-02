@@ -14,7 +14,7 @@ Con el fin de hacer funcionar nuestra API - REST, la cual he desarrollado en el 
 >
 >> az group deployment create --resource-group myhitoDai --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/docker-simple-on-ubuntu/azuredeploy.json
 
-![Con titulo](https://github.com/daiaguirre979/CC-Master/blob/master/ima1.PNG "Compo")
+![Con titulo](https://github.com/daiaguirre979/CC-Master/blob/master/ima1.png "Compo")
 
 
 4. Conectarnos por medio de SSH al nuevo host Docker.
@@ -30,8 +30,8 @@ Con el fin de hacer funcionar nuestra API - REST, la cual he desarrollado en el 
 >
 >> docker-compose up -d
 
-![Con titulo](https://github.com/daiaguirre979/CC-Master/blob/master/ima2.PNG "Compo")
+![Con titulo](https://github.com/daiaguirre979/CC-Master/blob/master/ima2.png "Compo")
 
-![Con titulo](https://github.com/daiaguirre979/CC-Master/blob/master/ima3.PNG "Compo")
+![Con titulo](https://github.com/daiaguirre979/CC-Master/blob/master/ima3.png "Compo")
 
-![Con titulo](https://github.com/daiaguirre979/CC-Master/blob/master/ima4.PNG "Compo")
+![Con titulo](https://github.com/daiaguirre979/CC-Master/blob/master/ima4.png "Compo")
